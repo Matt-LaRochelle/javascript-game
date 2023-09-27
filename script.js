@@ -1,3 +1,10 @@
+let playerState = 'sit';
+const dropdown = document.getElementById('animations');
+dropdown.addEventListener('change', function(e) {
+    playerState = e.target.value;
+});
+
+
 const canvas = document.getElementById('canvas1');
 const ctx = canvas.getContext('2d');
 const CANVAS_WIDTH = canvas.width = 600;
@@ -7,6 +14,7 @@ const playerImage = new Image ();
 playerImage.src = 'shadow_dog.png';
 const spriteWidth = 575;
 const spriteHeight = 523;
+
 
 let gameFrame = 0;
 // Personally I like 3 here.
@@ -51,7 +59,7 @@ const animationStates = [
         frames: 12,
     },
     {
-        name: "getHit",
+        name: "gethit",
         frames: 4,
     },
 ];
@@ -70,9 +78,9 @@ console.log(spriteAnimations);
 
 function animate() {
     ctx.clearRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
-    let position = Math.floor(gameFrame/staggerFrames) % spriteAnimations['sit'].loc.length;
+    let position = Math.floor(gameFrame/staggerFrames) % spriteAnimations[playerState].loc.length;
     let frameX = spriteWidth * position;
-    let frameY = spriteAnimations['sit'].loc[position].y;
+    let frameY = spriteAnimations[playerState].loc[position].y;
 
     // ctx.drawImage(image, sx, sy, sw, sh, dx, dy, dw, dh);
     ctx.drawImage(playerImage, frameX, frameY, spriteWidth, spriteHeight, 0, 0, spriteWidth, spriteHeight);
