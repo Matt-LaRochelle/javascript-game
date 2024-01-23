@@ -8,6 +8,10 @@ const enemiesArray = [];
 
 let gameFrame = 0;
 
+
+// Stopped at 2:13:34 - collision detection start
+
+
 class Enemy {
     constructor() {
         this.image = new Image();
